@@ -32,11 +32,30 @@ const Disco = (() => {
 
   // Groups: count, rotation speed at full velocity, theme color index.
   // fullSpeed=null → "chaos" group that bounces direction randomly.
+  // 51 total beams, balanced across four roles:
+  //
+  //   Group 0 — WAGON-WHEEL ILLUSION (densest layer)
+  //     18 beams → 20° gap. fullSpeed 19.8 is 0.2° shy of one full
+  //     beam-slot per frame, so the densest layer reads as drifting
+  //     BACKWARDS at ~12°/sec even though every beam is physically
+  //     sprinting 3.3 turns/sec forward. Classic stroboscopic aliasing.
+  //
+  //   Group 1 — slow real forward (12 beams, gap 30°)
+  //     Old fullSpeed -17.9 was 12°/frame visible jerks (seizure-y).
+  //     +5°/frame is comfortably below the gap → smooth rotation,
+  //     no aliasing. About 0.8 turns/sec forward.
+  //
+  //   Group 2 — slow real backward (9 beams, gap 40°)
+  //     Old fullSpeed 23.7 was 16°/frame visible jerks. -6°/frame is
+  //     well below the gap → smooth slow backward, ~1 turn/sec.
+  //     Counter-rotation to Group 1 gives the rave depth.
+  //
+  //   Group 3 — chaos (unchanged, bounces direction randomly)
   const GROUPS = [
-    { count: 30, fullSpeed:  11.8, colorIdx: 0 },
-    { count: 20, fullSpeed: -17.9, colorIdx: 1 },
-    { count: 15, fullSpeed:  23.7, colorIdx: 2 },
-    { count: 20, fullSpeed: null,  colorIdx: 3 },
+    { count: 18, fullSpeed:  19.8, colorIdx: 0 },
+    { count: 12, fullSpeed:   5,   colorIdx: 1 },
+    { count:  9, fullSpeed:  -6,   colorIdx: 2 },
+    { count: 12, fullSpeed: null,  colorIdx: 3 },
   ];
 
   const ACCEL_MS       = 500;    // spin-up duration (snappy hit-the-gas feel)

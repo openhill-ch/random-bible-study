@@ -80,7 +80,11 @@
 
   const BASE_SPEED  = 14;   // deg/frame for 66 items
   const MAX_SPEED   = 60;   // cap so the wheel doesn't become an invisible blur
-  const FRICTION    = 0.93;   // snappier brake — wheel stops in ~1.3-1.6s
+  const FRICTION    = 0.97;   // ~2.5-3.3s stop. Slow enough that the
+                              // wagon-wheel backwards illusion has time
+                              // to gradually fade as the strobes ramp
+                              // down — feels like everything is slowing
+                              // together, not snapping to a halt.
   const STOP_THRESH = 0.05;
 
   // Scale spin speed so the same number of items fly past the pointer per frame,
