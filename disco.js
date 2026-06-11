@@ -39,7 +39,7 @@ const Disco = (() => {
     { count: 20, fullSpeed: null,  colorIdx: 3 },
   ];
 
-  const ACCEL_MS       = 2000;   // spin-up duration
+  const ACCEL_MS       = 500;    // spin-up duration (snappy hit-the-gas feel)
   const DECEL_DECAY    = 0.985;  // per-frame velocity multiplier on decel
   const FREEZE_THICKEN = 15;     // beam width multiplier when frozen
   const IDLE_VELOCITY  = 0.012;  // gentle drift between cycles (loading-screen vibe)

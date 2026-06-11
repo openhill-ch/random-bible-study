@@ -80,7 +80,7 @@
 
   const BASE_SPEED  = 14;   // deg/frame for 66 items
   const MAX_SPEED   = 60;   // cap so the wheel doesn't become an invisible blur
-  const FRICTION    = 0.975;
+  const FRICTION    = 0.93;   // snappier brake — wheel stops in ~1.3-1.6s
   const STOP_THRESH = 0.05;
 
   // Scale spin speed so the same number of items fly past the pointer per frame,
